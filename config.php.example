@@ -1,0 +1,21 @@
+<?php
+function getSign($param, $sign_key){
+    ksort($param);
+    reset($param);
+    $signstr = '';
+	
+    foreach($param as $k => $v){
+        if($k != "sign" && $k != "sign_type" && $v!=''){
+            $signstr .= $k.'='.$v.'&';
+        }
+    }
+    $signstr = substr($signstr,0,-1);
+    $signstr .= $sign_key;
+    $sign = md5($signstr);
+    return $sign;
+}
+$apiurl = "https://epay.gov.cn";
+$internal_notify_url = "https://www.gov.cn/pay_proxy/notify.php";
+$key = "woaibeijingtiananmen";
+$true_notify_url="https://www.gov.cn/api/notify"
+?>
