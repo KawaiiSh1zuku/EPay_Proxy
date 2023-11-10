@@ -11,7 +11,8 @@ $sign_type = $_GET['sign_type'];
 
 $sign = getSign($_GET, $key);
 if($sign === $_GET['sign']){
-    $return_url = str_replace("/#/order/", "/index.php#/stage/order/info?id=", $return_url);
+    //$return_url = str_replace("/#/order/", "/index.php#/stage/order/info?id=", $return_url);
+	$return_url = str_replace("/#/order/" . $out_trade_no, "/pay_proxy/confirm.html", $return_url);
     $notify_url = $internal_notify_url;
 	$params = array(
 	    "money" => $money,
